@@ -30,11 +30,26 @@ function lunchoperation (){
     const moneyContainer = document.querySelector ('#price');
     const depositContainer = document.querySelector ('#depositos')
     const retirtContainer = document.querySelector ('#retiros')
+    const limitOperation = document.querySelector('#operation_limit')
+    if (moneyContainer.value >0){
     if (operationContainer.value === "DEPOSITAR"){
-        saldoContainer.textContent = parseInt(saldoContainer.textContent) + parseInt(moneyContainer.value);
-        depositContainer.textContent = parseInt(depositContainer.textContent) + parseInt(moneyContainer.value);
+        if (parseInt(saldoContainer.textContent) + parseInt(moneyContainer.value) <= 990){
+            saldoContainer.textContent = parseInt(saldoContainer.textContent) + parseInt(moneyContainer.value);
+            depositContainer.textContent = parseInt(depositContainer.textContent) + parseInt(moneyContainer.value);
+            limitOperation.textContent = "Operación realizada";
+        } else{
+            limitOperation.textContent = "No puedes tener en tu cuenta más de $990";
+        }
     }else if(operationContainer.value === "RETIRAR"){
-        saldoContainer.textContent = parseInt(saldoContainer.textContent) - parseInt(moneyContainer.value); 
-        retirtContainer.textContent = parseInt(retirtContainer.textContent) - parseInt(moneyContainer.value);
+        if (parseInt(saldoContainer.textContent) - parseInt(moneyContainer.value) >= 10){
+            saldoContainer.textContent = parseInt(saldoContainer.textContent) - parseInt(moneyContainer.value); 
+            retirtContainer.textContent = parseInt(retirtContainer.textContent) - parseInt(moneyContainer.value);
+            limitOperation.textContent = "Operación realizada";
+        }else{
+            limitOperation.textContent = "No es posible retirar";
+        }
+    }
+    }else{
+        limitOperation.textContent = "Ingresa un monto valido";
     }
 }
