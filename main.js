@@ -3,24 +3,22 @@ let Cuentas = [
     {User: "Francisco@gmail.com",Password:"ARC21", Saldo:290},
     {User: "Regina@gmail.com", Password:"REGI07",Saldo:67}
 ];
-
 const userContanier = document.querySelector('#email');
 const passwordContanier = document.querySelector('#password');
 const saldoContainer = document.querySelector ('#saldo_actual');
 const userConfirm= document.querySelector ('#user_conf');
 const operationContainer = document.querySelector ('#operation');
-
-
+function start(numUse){
+    userConfirm.textContent = "Haz iniciado sesión";
+    saldoContainer.textContent = Cuentas[numUse].Saldo;
+}
 function loggin (){
 if (userContanier.value === Cuentas[0].User && passwordContanier.value === Cuentas[0].Password){
-    userConfirm.textContent = "Haz iniciado sesión";
-    saldoContainer.textContent = Cuentas[0].Saldo;
+    start(0);
 } else if (userContanier.value === Cuentas[1].User && passwordContanier.value === Cuentas[1].Password){
-    userConfirm.textContent = "Haz iniciado sesión";
-    saldoContainer.textContent = Cuentas[1].Saldo;
+    start(1)
 } else if (userContanier.value === Cuentas[2].User && passwordContanier.value === Cuentas[2].Password){
-    userConfirm.textContent = "Haz iniciado sesión";
-    saldoContainer.textContent = Cuentas[2].Saldo;
+    start(2)
 } else {
     userConfirm.textContent = "Contraseña incorrecta, intente de nuevo.";
 }
